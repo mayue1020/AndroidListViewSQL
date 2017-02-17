@@ -4,7 +4,15 @@ package cc.simpleme.androidjdbc.util;
  * Created by dark_ on 2017-02-13.
  */
 
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.widget.Toast;
+
 import java.sql.*;
+import java.util.logging.Logger;
+
+import cc.simpleme.androidjdbc.MainActivity;
 
 public class Database {
     private static String USERNAME = "sa";
@@ -20,7 +28,7 @@ public class Database {
             // 加载驱动
 //            Class.forName(DRIVER);
             Class.forName("net.sourceforge.jtds.jdbc.Driver");//jdts加载驱动
-            System.out.println("测试加载驱动");
+            System.out.println("加载驱动.......");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -36,12 +44,32 @@ public class Database {
         }catch(SQLException e){
             System.out.println("数据库连接失败！");
             e.printStackTrace();
-            System.out.println("数据库连接失败！");
         }
 
         return conn;
     }
 
+
+    public ResultSet getSQL(String SQL) {
+        Statement pstmt = conn.createStatement();
+        ResultSet rs = pstmt.executeQuery("select * from listview");
+        rs.next();
+//        Logger.info("SELECT COUNT(*) AS CT FROM (SQL)方式：" + rs.getInt(1));
+
+        Toast.makeText(view.getContent(),rs.getInt(1),Toast.LENGTH_SHORT).show();
+
+        try {
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
 
     public String putSQL(String SQL){
         Exception e = null;

@@ -10,29 +10,38 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cc.simpleme.androidjdbc.MainActivity">
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/list"
-        android:layout_above="@+id/getsql"></ListView>
-
-
 
     <Button
-        android:text="getsql"
+        android:text="getSql"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/getsql"
-        android:layout_above="@+id/putsql"
+        android:id="@+id/getSql"
+        android:layout_above="@+id/putSql"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:text="putsql"
+        android:text="putSql"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/putsql"
+        android:id="@+id/putSql"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="500px"
+        android:id="@+id/list"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"></ListView>
+
+    <Button
+        android:text="listTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listTest"
+        android:layout_above="@+id/getSql"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

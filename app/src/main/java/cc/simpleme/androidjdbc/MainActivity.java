@@ -1,5 +1,6 @@
 package cc.simpleme.androidjdbc;
 
+import android.app.Activity;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 import android.view.View;
 
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,16 +26,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button putsql = (Button) findViewById(R.id.putsql);
-        putsql.setOnClickListener(new testPutBtn());
+        Button putSql = (Button) findViewById(R.id.putSql);
+        putSql.setOnClickListener(new testPutBtn());
 
-        Button getsql = (Button) findViewById(R.id.getsql);
-        getsql.setOnClickListener(new testGetBtn());
+        Button listTest = (Button) findViewById(R.id.listTest);
+        listTest.setOnClickListener(new listTest());
+
+        Button getSql = (Button) findViewById(R.id.getSql);
+        getSql.setOnClickListener(new testGetBtn() );
 
     }
 
     //监听按钮刷新listview
-    class testGetBtn implements View.OnClickListener{
+    class listTest implements View.OnClickListener{
         int i;
         int t = 1;
         //循环判断在获取第三个数据时结束循环并保存数据，再次点击按钮时继续循环；
@@ -70,6 +75,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    class testGetBtn implements View.OnClickListener{
+        public void onClick(View v){
+            getThread m = new getThread();
+            m.start();
+            Toast.makeText(MainActivity.this,ex,Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    static class getThread extends Thread{
+        public void run(){
+            Database a = new Database();
+            try {
+                a.getSQL("select * from listview");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
 
     class testPutBtn implements View.OnClickListener{
         @Override
