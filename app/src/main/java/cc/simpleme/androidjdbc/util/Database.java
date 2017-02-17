@@ -10,15 +10,16 @@ public class Database {
     private static String USERNAME = "sa";
     private static String PASSWORD = "Mrma88888888";
     private static String databese;
-    private static String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private static String URL = "jdbc:sqlserver://simpleme.cc:1433;databaseName=listtest";
-
+    private static String DRIVER = "cvom.microsoft.sqlserver.jdbc.SQLServerDriver";
+//    private static String URL = "jdbc:sqlserver://simpleme.cc:1433;databaseName=listtest";
+    private static String URL = "jdbc:jtds:sqlserver://simpleme.cc:1433;DatabaseName=listtest";//JTDS连接数据库链接
 
 
     static {
         try {
             // 加载驱动
-            Class.forName(DRIVER);
+//            Class.forName(DRIVER);
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");//jdts加载驱动
             System.out.println("测试加载驱动");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
