@@ -88,8 +88,10 @@ public class MainActivity extends AppCompatActivity {
             Database a = new Database();
             try {
                 a.getSQL("select * from listview");
+                ex = "select....";
             } catch (SQLException e) {
                 e.printStackTrace();
+                ex = ""+e;
             }
 
         }

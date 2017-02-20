@@ -50,13 +50,12 @@ public class Database {
     }
 
 
-    public ResultSet getSQL(String SQL) {
+    public ResultSet getSQL(String SQL) throws SQLException {
         Statement pstmt = conn.createStatement();
         ResultSet rs = pstmt.executeQuery("select * from listview");
         rs.next();
 //        Logger.info("SELECT COUNT(*) AS CT FROM (SQL)方式：" + rs.getInt(1));
 
-        Toast.makeText(view.getContent(),rs.getInt(1),Toast.LENGTH_SHORT).show();
 
         try {
             rs.close();
