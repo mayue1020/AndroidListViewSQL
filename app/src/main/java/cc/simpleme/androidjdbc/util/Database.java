@@ -49,24 +49,18 @@ public class Database {
         return conn;
     }
 
-
-    public ResultSet getSQL(String SQL) throws SQLException {
-        Statement pstmt = conn.createStatement();
-        ResultSet rs = pstmt.executeQuery("select * from listview");
-        rs.next();
-//        Logger.info("SELECT COUNT(*) AS CT FROM (SQL)方式：" + rs.getInt(1));
-
-
+    //查询并返回结果集
+    public ResultSet getSQL(String SQL){
+        ResultSet rs = null;
+        Statement stmt;
         try {
-            rs.close();
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(SQL);
         } catch (SQLException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        try {
-            pstmt.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
         return rs;
     }
 

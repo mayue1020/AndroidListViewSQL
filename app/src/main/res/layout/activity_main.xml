@@ -44,4 +44,12 @@
         android:layout_above="@+id/getSql"
         android:layout_alignParentStart="true" />
 
+    <Button
+        android:text="refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/refresh"
+        android:layout_above="@+id/listTest"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
